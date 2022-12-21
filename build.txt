@@ -1,0 +1,342 @@
+GNU Make 4.3
+为 x86_64-pc-linux-gnu 编译
+Copyright (C) 1988-2020 Free Software Foundation, Inc.
+许可证：GPLv3+：GNU 通用公共许可证第 3 版或更新版本<http://gnu.org/licenses/gpl.html>。
+本软件是自由软件：您可以自由修改和重新发布它。
+在法律允许的范围内没有其他保证。
+正在读入 makefiles...
+正在更新 makefile....
+更新目标....
+ 文件“qemu”不存在。
+   文件“kernel/kernel”不存在。
+     文件“kernel/entry.o”不存在。
+    必须重新制作目标“kernel/entry.o”。
+riscv64-linux-gnu-gcc    -c -o kernel/entry.o kernel/entry.S
+    重新制作目标文件“kernel/entry.o”成功。
+     文件“kernel/kalloc.o”不存在。
+    必须重新制作目标“kernel/kalloc.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/kalloc.o kernel/kalloc.c
+    重新制作目标文件“kernel/kalloc.o”成功。
+     文件“kernel/string.o”不存在。
+    必须重新制作目标“kernel/string.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/string.o kernel/string.c
+    重新制作目标文件“kernel/string.o”成功。
+     文件“kernel/main.o”不存在。
+    必须重新制作目标“kernel/main.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/main.o kernel/main.c
+    重新制作目标文件“kernel/main.o”成功。
+     文件“kernel/vm.o”不存在。
+    必须重新制作目标“kernel/vm.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/vm.o kernel/vm.c
+    重新制作目标文件“kernel/vm.o”成功。
+     文件“kernel/proc.o”不存在。
+    必须重新制作目标“kernel/proc.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/proc.o kernel/proc.c
+    重新制作目标文件“kernel/proc.o”成功。
+     文件“kernel/swtch.o”不存在。
+    必须重新制作目标“kernel/swtch.o”。
+riscv64-linux-gnu-gcc    -c -o kernel/swtch.o kernel/swtch.S
+    重新制作目标文件“kernel/swtch.o”成功。
+     文件“kernel/trampoline.o”不存在。
+    必须重新制作目标“kernel/trampoline.o”。
+riscv64-linux-gnu-gcc    -c -o kernel/trampoline.o kernel/trampoline.S
+    重新制作目标文件“kernel/trampoline.o”成功。
+     文件“kernel/trap.o”不存在。
+    必须重新制作目标“kernel/trap.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/trap.o kernel/trap.c
+    重新制作目标文件“kernel/trap.o”成功。
+     文件“kernel/syscall.o”不存在。
+    必须重新制作目标“kernel/syscall.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/syscall.o kernel/syscall.c
+    重新制作目标文件“kernel/syscall.o”成功。
+     文件“kernel/sysproc.o”不存在。
+    必须重新制作目标“kernel/sysproc.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/sysproc.o kernel/sysproc.c
+    重新制作目标文件“kernel/sysproc.o”成功。
+     文件“kernel/bio.o”不存在。
+    必须重新制作目标“kernel/bio.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/bio.o kernel/bio.c
+    重新制作目标文件“kernel/bio.o”成功。
+     文件“kernel/fs.o”不存在。
+    必须重新制作目标“kernel/fs.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/fs.o kernel/fs.c
+    重新制作目标文件“kernel/fs.o”成功。
+     文件“kernel/log.o”不存在。
+    必须重新制作目标“kernel/log.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/log.o kernel/log.c
+    重新制作目标文件“kernel/log.o”成功。
+     文件“kernel/sleeplock.o”不存在。
+    必须重新制作目标“kernel/sleeplock.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/sleeplock.o kernel/sleeplock.c
+    重新制作目标文件“kernel/sleeplock.o”成功。
+     文件“kernel/file.o”不存在。
+    必须重新制作目标“kernel/file.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/file.o kernel/file.c
+    重新制作目标文件“kernel/file.o”成功。
+     文件“kernel/pipe.o”不存在。
+    必须重新制作目标“kernel/pipe.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/pipe.o kernel/pipe.c
+    重新制作目标文件“kernel/pipe.o”成功。
+     文件“kernel/exec.o”不存在。
+    必须重新制作目标“kernel/exec.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/exec.o kernel/exec.c
+    重新制作目标文件“kernel/exec.o”成功。
+     文件“kernel/sysfile.o”不存在。
+    必须重新制作目标“kernel/sysfile.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/sysfile.o kernel/sysfile.c
+    重新制作目标文件“kernel/sysfile.o”成功。
+     文件“kernel/kernelvec.o”不存在。
+    必须重新制作目标“kernel/kernelvec.o”。
+riscv64-linux-gnu-gcc    -c -o kernel/kernelvec.o kernel/kernelvec.S
+    重新制作目标文件“kernel/kernelvec.o”成功。
+     文件“kernel/plic.o”不存在。
+    必须重新制作目标“kernel/plic.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/plic.o kernel/plic.c
+    重新制作目标文件“kernel/plic.o”成功。
+     文件“kernel/virtio_disk.o”不存在。
+    必须重新制作目标“kernel/virtio_disk.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/virtio_disk.o kernel/virtio_disk.c
+    重新制作目标文件“kernel/virtio_disk.o”成功。
+     文件“kernel/start.o”不存在。
+    必须重新制作目标“kernel/start.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/start.o kernel/start.c
+    重新制作目标文件“kernel/start.o”成功。
+     文件“kernel/console.o”不存在。
+    必须重新制作目标“kernel/console.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/console.o kernel/console.c
+    重新制作目标文件“kernel/console.o”成功。
+     文件“kernel/printf.o”不存在。
+    必须重新制作目标“kernel/printf.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/printf.o kernel/printf.c
+    重新制作目标文件“kernel/printf.o”成功。
+     文件“kernel/uart.o”不存在。
+    必须重新制作目标“kernel/uart.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/uart.o kernel/uart.c
+    重新制作目标文件“kernel/uart.o”成功。
+     文件“kernel/spinlock.o”不存在。
+    必须重新制作目标“kernel/spinlock.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/spinlock.o kernel/spinlock.c
+    重新制作目标文件“kernel/spinlock.o”成功。
+     文件“user/initcode”不存在。
+    必须重新制作目标“user/initcode”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie -march=rv64g -nostdinc -I. -Ikernel -c user/initcode.S -o user/initcode.o
+riscv64-linux-gnu-ld -z max-page-size=4096 -N -e start -Ttext 0 -o user/initcode.out user/initcode.o
+riscv64-linux-gnu-objcopy -S -O binary user/initcode.out user/initcode
+riscv64-linux-gnu-objdump -S user/initcode.o > user/initcode.asm
+    重新制作目标文件“user/initcode”成功。
+  必须重新制作目标“kernel/kernel”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T kernel/kernel.ld -o kernel/kernel kernel/entry.o kernel/kalloc.o kernel/string.o kernel/main.o kernel/vm.o kernel/proc.o kernel/swtch.o kernel/trampoline.o kernel/trap.o kernel/syscall.o kernel/sysproc.o kernel/bio.o kernel/fs.o kernel/log.o kernel/sleeplock.o kernel/file.o kernel/pipe.o kernel/exec.o kernel/sysfile.o kernel/kernelvec.o kernel/plic.o kernel/virtio_disk.o kernel/start.o kernel/console.o kernel/printf.o kernel/uart.o kernel/spinlock.o
+riscv64-linux-gnu-objdump -S kernel/kernel > kernel/kernel.asm
+riscv64-linux-gnu-objdump -t kernel/kernel | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > kernel/kernel.sym
+  重新制作目标文件“kernel/kernel”成功。
+   文件“fs.img”不存在。
+     文件“mkfs/mkfs”不存在。
+    必须重新制作目标“mkfs/mkfs”。
+gcc -DSOL_UTIL -DLAB_UTIL -Werror -Wall -I. -o mkfs/mkfs mkfs/mkfs.c
+    重新制作目标文件“mkfs/mkfs”成功。
+     文件“user/_cat”不存在。
+       文件“user/ulib.o”不存在。
+      必须重新制作目标“user/ulib.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/ulib.o user/ulib.c
+      重新制作目标文件“user/ulib.o”成功。
+       文件“user/usys.o”不存在。
+         文件“user/usys.S”不存在。
+        必须重新制作目标“user/usys.S”。
+perl user/usys.pl > user/usys.S
+        重新制作目标文件“user/usys.S”成功。
+      必须重新制作目标“user/usys.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie -c -o user/usys.o user/usys.S
+      重新制作目标文件“user/usys.o”成功。
+       文件“user/printf.o”不存在。
+      必须重新制作目标“user/printf.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/printf.o user/printf.c
+      重新制作目标文件“user/printf.o”成功。
+       文件“user/umalloc.o”不存在。
+      必须重新制作目标“user/umalloc.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/umalloc.o user/umalloc.c
+      重新制作目标文件“user/umalloc.o”成功。
+      文件“user/cat.o”不存在。
+     必须重新制作目标“user/cat.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/cat.o user/cat.c
+     重新制作目标文件“user/cat.o”成功。
+    必须重新制作目标“user/_cat”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_cat user/cat.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_cat > user/cat.asm
+riscv64-linux-gnu-objdump -t user/_cat | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/cat.sym
+    重新制作目标文件“user/_cat”成功。
+     文件“user/_echo”不存在。
+      文件“user/echo.o”不存在。
+     必须重新制作目标“user/echo.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/echo.o user/echo.c
+     重新制作目标文件“user/echo.o”成功。
+    必须重新制作目标“user/_echo”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_echo user/echo.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_echo > user/echo.asm
+riscv64-linux-gnu-objdump -t user/_echo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/echo.sym
+    重新制作目标文件“user/_echo”成功。
+     文件“user/_forktest”不存在。
+       文件“user/forktest.o”不存在。
+      必须重新制作目标“user/forktest.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/forktest.o user/forktest.c
+      重新制作目标文件“user/forktest.o”成功。
+    必须重新制作目标“user/_forktest”。
+# forktest has less library code linked in - needs to be small
+# in order to be able to max out the proc table.
+riscv64-linux-gnu-ld -z max-page-size=4096 -N -e main -Ttext 0 -o user/_forktest user/forktest.o user/ulib.o user/usys.o
+riscv64-linux-gnu-objdump -S user/_forktest > user/forktest.asm
+    重新制作目标文件“user/_forktest”成功。
+     文件“user/_grep”不存在。
+      文件“user/grep.o”不存在。
+     必须重新制作目标“user/grep.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/grep.o user/grep.c
+     重新制作目标文件“user/grep.o”成功。
+    必须重新制作目标“user/_grep”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_grep user/grep.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_grep > user/grep.asm
+riscv64-linux-gnu-objdump -t user/_grep | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/grep.sym
+    重新制作目标文件“user/_grep”成功。
+     文件“user/_init”不存在。
+      文件“user/init.o”不存在。
+     必须重新制作目标“user/init.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/init.o user/init.c
+     重新制作目标文件“user/init.o”成功。
+    必须重新制作目标“user/_init”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_init user/init.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_init > user/init.asm
+riscv64-linux-gnu-objdump -t user/_init | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/init.sym
+    重新制作目标文件“user/_init”成功。
+     文件“user/_kill”不存在。
+      文件“user/kill.o”不存在。
+     必须重新制作目标“user/kill.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/kill.o user/kill.c
+     重新制作目标文件“user/kill.o”成功。
+    必须重新制作目标“user/_kill”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_kill user/kill.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_kill > user/kill.asm
+riscv64-linux-gnu-objdump -t user/_kill | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/kill.sym
+    重新制作目标文件“user/_kill”成功。
+     文件“user/_ln”不存在。
+      文件“user/ln.o”不存在。
+     必须重新制作目标“user/ln.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/ln.o user/ln.c
+     重新制作目标文件“user/ln.o”成功。
+    必须重新制作目标“user/_ln”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_ln user/ln.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_ln > user/ln.asm
+riscv64-linux-gnu-objdump -t user/_ln | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/ln.sym
+    重新制作目标文件“user/_ln”成功。
+     文件“user/_ls”不存在。
+      文件“user/ls.o”不存在。
+     必须重新制作目标“user/ls.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/ls.o user/ls.c
+     重新制作目标文件“user/ls.o”成功。
+    必须重新制作目标“user/_ls”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_ls user/ls.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_ls > user/ls.asm
+riscv64-linux-gnu-objdump -t user/_ls | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/ls.sym
+    重新制作目标文件“user/_ls”成功。
+     文件“user/_mkdir”不存在。
+      文件“user/mkdir.o”不存在。
+     必须重新制作目标“user/mkdir.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/mkdir.o user/mkdir.c
+     重新制作目标文件“user/mkdir.o”成功。
+    必须重新制作目标“user/_mkdir”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_mkdir user/mkdir.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_mkdir > user/mkdir.asm
+riscv64-linux-gnu-objdump -t user/_mkdir | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/mkdir.sym
+    重新制作目标文件“user/_mkdir”成功。
+     文件“user/_rm”不存在。
+      文件“user/rm.o”不存在。
+     必须重新制作目标“user/rm.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/rm.o user/rm.c
+     重新制作目标文件“user/rm.o”成功。
+    必须重新制作目标“user/_rm”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_rm user/rm.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_rm > user/rm.asm
+riscv64-linux-gnu-objdump -t user/_rm | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/rm.sym
+    重新制作目标文件“user/_rm”成功。
+     文件“user/_sh”不存在。
+      文件“user/sh.o”不存在。
+     必须重新制作目标“user/sh.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/sh.o user/sh.c
+     重新制作目标文件“user/sh.o”成功。
+    必须重新制作目标“user/_sh”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_sh user/sh.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_sh > user/sh.asm
+riscv64-linux-gnu-objdump -t user/_sh | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/sh.sym
+    重新制作目标文件“user/_sh”成功。
+     文件“user/_stressfs”不存在。
+      文件“user/stressfs.o”不存在。
+     必须重新制作目标“user/stressfs.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/stressfs.o user/stressfs.c
+     重新制作目标文件“user/stressfs.o”成功。
+    必须重新制作目标“user/_stressfs”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_stressfs user/stressfs.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_stressfs > user/stressfs.asm
+riscv64-linux-gnu-objdump -t user/_stressfs | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/stressfs.sym
+    重新制作目标文件“user/_stressfs”成功。
+     文件“user/_usertests”不存在。
+      文件“user/usertests.o”不存在。
+     必须重新制作目标“user/usertests.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/usertests.o user/usertests.c
+     重新制作目标文件“user/usertests.o”成功。
+    必须重新制作目标“user/_usertests”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_usertests user/usertests.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_usertests > user/usertests.asm
+riscv64-linux-gnu-objdump -t user/_usertests | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/usertests.sym
+    重新制作目标文件“user/_usertests”成功。
+     文件“user/_grind”不存在。
+      文件“user/grind.o”不存在。
+     必须重新制作目标“user/grind.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/grind.o user/grind.c
+     重新制作目标文件“user/grind.o”成功。
+    必须重新制作目标“user/_grind”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_grind user/grind.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_grind > user/grind.asm
+riscv64-linux-gnu-objdump -t user/_grind | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/grind.sym
+    重新制作目标文件“user/_grind”成功。
+     文件“user/_wc”不存在。
+      文件“user/wc.o”不存在。
+     必须重新制作目标“user/wc.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/wc.o user/wc.c
+     重新制作目标文件“user/wc.o”成功。
+    必须重新制作目标“user/_wc”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_wc user/wc.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_wc > user/wc.asm
+riscv64-linux-gnu-objdump -t user/_wc | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/wc.sym
+    重新制作目标文件“user/_wc”成功。
+     文件“user/_zombie”不存在。
+      文件“user/zombie.o”不存在。
+     必须重新制作目标“user/zombie.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/zombie.o user/zombie.c
+     重新制作目标文件“user/zombie.o”成功。
+    必须重新制作目标“user/_zombie”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_zombie user/zombie.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_zombie > user/zombie.asm
+riscv64-linux-gnu-objdump -t user/_zombie | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/zombie.sym
+    重新制作目标文件“user/_zombie”成功。
+     文件“user/_sleep”不存在。
+      文件“user/sleep.o”不存在。
+     必须重新制作目标“user/sleep.o”。
+riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_UTIL -DLAB_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/sleep.o user/sleep.c
+     重新制作目标文件“user/sleep.o”成功。
+    必须重新制作目标“user/_sleep”。
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_sleep user/sleep.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_sleep > user/sleep.asm
+riscv64-linux-gnu-objdump -t user/_sleep | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/sleep.sym
+    重新制作目标文件“user/_sleep”成功。
+  必须重新制作目标“fs.img”。
+mkfs/mkfs fs.img README user/xargstest.sh user/_cat user/_echo user/_forktest user/_grep user/_init user/_kill user/_ln user/_ls user/_mkdir user/_rm user/_sh user/_stressfs user/_usertests user/_grind user/_wc user/_zombie user/_sleep
+nmeta 46 (boot, super, log blocks 30 inode blocks 13, bitmap blocks 1) blocks 1954 total 2000
+balloc: first 778 blocks have been allocated
+balloc: write bitmap block at sector 45
+  重新制作目标文件“fs.img”成功。
+必须重新制作目标“qemu”。
+qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 3 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+hart 2 starting
+hart 1 starting
+init: starting sh
+$ 
