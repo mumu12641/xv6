@@ -5,6 +5,7 @@
 #include "memlayout.h"
 #include "spinlock.h"
 #include "proc.h"
+#include "sysinfo.h"
 
 uint64
 sys_exit(void)
@@ -90,4 +91,46 @@ sys_uptime(void)
   xticks = ticks;
   release(&tickslock);
   return xticks;
+}
+
+uint64
+sys_trace(void)
+{
+  int mask;
+
+  // Fetch the nth 32-bit system call argument.
+  argint(0,&mask);
+  if(mask < 0){
+    return -1;
+  }
+  
+  myproc()->trace_mask = mask; 
+  return 0;
+}
+
+uint64
+sys_sysinfo(void)
+{
+//   sysinfo needs to copy a struct sysinfo back to user space; see sys_fstat() (kernel/sysfile.c) and filestat() (kernel/file.c) for examples of how to do that using copyout().
+// To collect the amount of free memory, add a function to kernel/kalloc.c
+// To collect the number of processes, add a function to kernel/proc.c
+
+// struct file *f;
+//   uint64 st; // user pointer to struct stat
+
+//   argaddr(1, &st);
+//   if(argfd(0, 0, &f) < 0)
+//     return -1;
+//   return filestat(f, st);
+
+  struct sysinfo p;
+  p.freemem = get_free_memory();
+  p.nproc = get_unused_process();
+  uint64 addr;
+  argaddr(0,&addr);
+  // argaddr(0,p);
+  if(copyout(myproc() -> pagetable,addr,(char *)&p,sizeof(struct sysinfo))<0){
+    return -1;
+  }
+  return 0;
 }
