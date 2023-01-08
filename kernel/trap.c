@@ -59,7 +59,6 @@ usertrap(void)
     // sepc points to the ecall instruction,
     // but we want to return to the next instruction.
     p->trapframe->epc += 4;
-
     // an interrupt will change sepc, scause, and sstatus,
     // so enable only now that we're done with those registers.
     intr_on();
@@ -77,9 +76,17 @@ usertrap(void)
     exit(-1);
 
   // give up the CPU if this is a timer interrupt.
-  if(which_dev == 2)
+  if(which_dev == 2){
+    // every tick
+    p->ticks_count++;
+    if(p->ticks_count == p->alarm_interval && p->is_alarming == 0) {
+        memmove(p->previous_frame, p->trapframe, sizeof(struct trapframe));
+        p->trapframe->epc = p->alarm_handler;
+        p->ticks_count = 0;
+        p->is_alarming = 1;
+    }
     yield();
-
+  }
   usertrapret();
 }
 
