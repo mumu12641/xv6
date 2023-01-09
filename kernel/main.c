@@ -7,6 +7,7 @@
 volatile static int started = 0;
 
 // start() jumps here in supervisor mode on all CPUs.
+
 void
 main()
 {
@@ -15,6 +16,11 @@ main()
     printfinit();
     printf("\n");
     printf("xv6 kernel is booting\n");
+    printf("               __   \n");
+    printf(" __  ____   __/ /_  \n");
+    printf(" \\ \\/ /\\ \\ / / '_ \\ \n");
+    printf("  >  <  \\ V /| (_) |\n");
+    printf(" /_/\\_\\  \\_/  \\___/ \n");
     printf("\n");
     kinit();         // physical page allocator
     kvminit();       // create kernel page table
