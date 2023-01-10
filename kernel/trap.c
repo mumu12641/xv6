@@ -16,6 +16,7 @@ void kernelvec();
 
 extern int devintr();
 
+
 void
 trapinit(void)
 {
@@ -67,6 +68,30 @@ usertrap(void)
     syscall();
   } else if((which_dev = devintr()) != 0){
     // ok
+  } else if(r_scause() == 15){
+    // page fault
+    uint64 va = r_stval();
+    pte_t *pte;
+    if((pte = walk(p->pagetable, va, 0)) == 0)
+      panic("page fault: pte should exist");
+    if((*pte & PTE_COW) == 1){
+      uint64 oldpa = PTE2PA(*pte);
+
+      if(getref(oldpa) == 2){
+        *pte = (*pte) & PTE_W;
+        *pte = (*pte) & (~PTE_COW);
+      }
+
+      uint64 pa = (uint64)kalloc();
+      uint flags = PTE_FLAGS(*pte);
+      memmove((void *)pa, (void *)oldpa, PGSIZE);
+      if(mappages(p->pagetable, va, PGSIZE, pa, flags & (~PTE_COW) & PTE_W) != 0){
+        panic("page fault mappages: error");
+      }
+      kfree((void *)oldpa);
+    } else {
+      panic("page fault: not COW");
+    }
   } else {
     printf("usertrap(): unexpected scause %p pid=%d\n", r_scause(), p->pid);
     printf("            sepc=%p stval=%p\n", r_sepc(), r_stval());
