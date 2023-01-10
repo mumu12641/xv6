@@ -1,0 +1,23 @@
+1.Looking at the backtrace output, which function called syscall?
+    kernel/trap.c usertrap
+
+2.What is the value of p->trapframe->a7 and what does that value represent? (Hint: look user/initcode.S, the first user program xv6 starts.)
+    SYS_exec
+
+3.What was the previous mode that the CPU was in?
+    machine mode
+
+
+user/user.h:		用户态程序调用跳板函数 trace()
+user/usys.S:		跳板函数 trace() 使用 CPU 提供的 ecall 指令，调用到内核态
+kernel/syscall.c	到达内核态统一系统调用处理函数 syscall()，所有系统调用都会跳到这里来处理。
+kernel/syscall.c	syscall() 根据跳板传进来的系统调用编号，查询 syscalls[] 表，找到对应的内核函数并调用。
+kernel/sysproc.c	到达 sys_trace() 函数，执行具体内核操作
+
+这么繁琐的调用流程的主要目的是实现用户态和内核态的良好隔离。
+
+并且由于内核与用户进程的页表不同，寄存器也不互通，所以参数无法直接通过 C 语言参数的形式传过来，而是需要使用 argaddr、argint、argstr 等系列函数，
+从进程的 trapframe 中读取用户进程寄存器中的参数。
+
+同时由于页表不同，指针也不能直接互通访问（也就是内核不能直接对用户态传进来的指针进行解引用），而是需要使用 copyin、copyout 方法结合进程的页表，
+才能顺利找到用户态指针（逻辑地址）对应的物理内存地址。
