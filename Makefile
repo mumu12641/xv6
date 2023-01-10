@@ -193,7 +193,7 @@ UPROGS=\
 	$U/_pingpong\
 	$U/_primes\
 	$U/_find\
-	$U/_xargs
+	$U/_xargs\
 	$U/_trace\
 	$U/_sysinfotest\
 
@@ -262,11 +262,11 @@ UPROGS += \
 	$U/_nettests
 endif
 
-UEXTRA=
-ifeq ($(LAB),util)
-	UEXTRA += user/xargstest.sh
-endif
-
+# UEXTRA=
+# ifeq ($(LAB),util)
+# 	
+# endif
+UEXTRA += user/xargstest.sh
 
 fs.img: mkfs/mkfs README $(UEXTRA) $(UPROGS)
 	mkfs/mkfs fs.img README $(UEXTRA) $(UPROGS)
