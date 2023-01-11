@@ -9,9 +9,8 @@
 #include "riscv.h"
 #include "defs.h"
 
-#define PA2PGREF_ID(p) (((p)-KERNBASE) / PGSIZE)
+#define PA2PGREF_ID(p) ((((uint64)p) - KERNBASE) / PGSIZE)
 #define PGREF_MAX_ENTRIES PA2PGREF_ID(PHYSTOP)
-#define PA2PGREF(p) pageref[PA2PGREF_ID((uint64)(p))]
 
 void freerange(void *pa_start, void *pa_end);
 
@@ -27,12 +26,15 @@ struct {
     struct run *freelist;
 } kmem;
 
-struct spinlock pgreflock;
-int pageref[PGREF_MAX_ENTRIES];
+
+struct {
+    struct spinlock lock;
+    int cnt[PGREF_MAX_ENTRIES];
+} ref;
 
 void kinit() {
     initlock(&kmem.lock, "kmem");
-    initlock(&pgreflock, "pgref");
+    initlock(&ref.lock, "pgref");
     freerange(end, (void *)PHYSTOP);
 }
 
@@ -54,8 +56,8 @@ void kfree(void *pa) {
     if (((uint64)pa % PGSIZE) != 0 || (char *)pa < end || (uint64)pa >= PHYSTOP)
         panic("kfree");
 
-    acquire(&pgreflock);
-    if (--PA2PGREF(pa) <= 0) {
+    acquire(&ref.lock);
+    if (--ref.cnt[PA2PGREF_ID(pa)] <= 0) {
         // Fill with junk to catch dangling refs.
         // pa will be memset multiple times if race-condition occurred.
         memset(pa, 1, PGSIZE);
@@ -67,8 +69,9 @@ void kfree(void *pa) {
         kmem.freelist = r;
         release(&kmem.lock);
     }
-    release(&pgreflock);
+    release(&ref.lock);
 }
+
 // Allocate one 4096-byte page of physical memory.
 // Returns a pointer that the kernel can use.
 // Returns 0 if the memory cannot be allocated.
@@ -82,12 +85,37 @@ void *kalloc(void) {
 
     if (r) {
         memset((char *)r, 5, PGSIZE);
-        PA2PGREF(r) = 1;
+        ref.cnt[PA2PGREF_ID(r)] = 1;
     }
 
     return (void *)r;
 }
 
+void *kcowcopy(void *pa) {
+    acquire(&ref.lock);
+    if (ref.cnt[PA2PGREF_ID(pa)] <= 1) {
+        release(&ref.lock);
+        return pa;
+    }
+
+    uint64 newpa = (uint64)kalloc();
+    if (newpa == 0) {
+        release(&ref.lock);
+        return 0;
+    }
+    memmove((void *)newpa, (void *)pa, PGSIZE);
+
+    ref.cnt[PA2PGREF_ID(pa)]--;
+
+    release(&ref.lock);
+    return (void *)newpa;
+}
+
+void addref(void *pa) {
+    acquire(&ref.lock);
+    ref.cnt[PA2PGREF_ID(pa)]++;
+    release(&ref.lock);
+}
 uint64 get_free_memory(void) {
     // 锁
     acquire(&kmem.lock);
@@ -101,30 +129,4 @@ uint64 get_free_memory(void) {
 
     release(&kmem.lock);
     return mem_bytes;
-}
-void *kcowcopy(void *pa) {
-    acquire(&pgreflock);
-
-    if (PA2PGREF(pa) <= 1) {
-        release(&pgreflock);
-        return pa;
-    }
-
-    uint64 newpa = (uint64)kalloc();
-    if (newpa == 0) {
-        release(&pgreflock);
-        return 0;
-    }
-    memmove((void *)newpa, (void *)pa, PGSIZE);
-
-    PA2PGREF(pa)--;
-
-    release(&pgreflock);
-    return (void *)newpa;
-}
-
-void addref(void *pa) {
-    acquire(&pgreflock);
-    PA2PGREF(pa)++;
-    release(&pgreflock);
 }
