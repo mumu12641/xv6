@@ -63,9 +63,8 @@ void            ramdiskrw(struct buf*);
 void*           kalloc(void);
 void            kfree(void *);
 void            kinit(void);
-int             getref(uint64);
-void            addref(uint64);
-void            reduceref(uint64);
+void            addref(void *);
+void*           kcowcopy(void *); 
 
 
 // log.c
@@ -177,8 +176,8 @@ uint64          walkaddr(pagetable_t, uint64);
 int             copyout(pagetable_t, uint64, char *, uint64);
 int             copyin(pagetable_t, char *, uint64, uint64);
 int             copyinstr(pagetable_t, char *, uint64, uint64);
-int             uvmcheckcowpage(uint64,struct proc *);
-int             uvmcowcopy(uint64,struct proc *);
+int             uvmcheckcowpage(uint64);
+int             uvmcowcopy(uint64);
 
 // plic.c
 void            plicinit(void);

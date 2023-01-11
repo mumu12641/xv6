@@ -55,11 +55,10 @@ void usertrap(void) {
         syscall();
     } else if ((which_dev = devintr()) != 0) {
         // ok
-    } else if (r_scause() == 13 || r_scause() == 15) {
-        // page fault
-        uint64 va = r_stval();
-        if (uvmcheckcowpage(va, p) == 0 || uvmcowcopy(va, p) == 0) {
-            setkilled(p);
+    } else if ((r_scause() == 13 || r_scause() == 15) &&
+               uvmcheckcowpage(r_stval())) {  // copy-on-write
+        if (uvmcowcopy(r_stval()) == -1) {  // 如果内存不足，则杀死进程
+            p->killed = 1;
         }
     } else {
         printf("usertrap(): unexpected scause %p pid=%d\n", r_scause(), p->pid);
