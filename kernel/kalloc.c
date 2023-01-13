@@ -26,7 +26,6 @@ struct {
     struct run *freelist;
 } kmem;
 
-
 struct {
     struct spinlock lock;
     int cnt[PGREF_MAX_ENTRIES];

@@ -41,9 +41,9 @@ void find(char* path, char* target) {
                 }
                 // Don't recurse into "." and "..".
                 if (strcmp(buf + strlen(buf) - 1, ".") != 0 &&
-                    strcmp(buf + strlen(buf) - 2, "..") != 0){
-                        find(buf,target);
-                    }
+                    strcmp(buf + strlen(buf) - 2, "..") != 0) {
+                    find(buf, target);
+                }
             }
             break;
     }
@@ -52,7 +52,7 @@ void find(char* path, char* target) {
 
 int main(int argc, char** argv) {
     if (argc < 3) {
-        fprintf(2,"Usage: find path target\n");
+        fprintf(2, "Usage: find path target\n");
         exit(0);
     }
     find(argv[1], argv[2]);
