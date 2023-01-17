@@ -1,0 +1,8 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "*.c": "c",
+        "types.h": "c",
+        "type_traits": "c"
+    }
+}
