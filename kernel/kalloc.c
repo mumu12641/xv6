@@ -24,25 +24,25 @@ struct run {
 struct {
     struct spinlock lock;
     struct run *freelist;
-} kmem;
+} kmem[NCPU];
 
-struct {
-    struct spinlock lock;
-    int cnt[PGREF_MAX_ENTRIES];
-} ref;
+char *kmem_lock_names[] = {
+    "kmem_cpu_0", "kmem_cpu_1", "kmem_cpu_2", "kmem_cpu_3",
+    "kmem_cpu_4", "kmem_cpu_5", "kmem_cpu_6", "kmem_cpu_7",
+};
 
 void kinit() {
-    initlock(&kmem.lock, "kmem");
-    initlock(&ref.lock, "pgref");
+    // initlock(&kmem.lock, "kmem");
+    for (int i = 0; i < NCPU; i++) {
+        initlock(&kmem[i].lock, kmem_lock_names[i]);
+    }
     freerange(end, (void *)PHYSTOP);
 }
 
 void freerange(void *pa_start, void *pa_end) {
     char *p;
     p = (char *)PGROUNDUP((uint64)pa_start);
-    for (; p + PGSIZE <= (char *)pa_end; p += PGSIZE) {
-        kfree(p);
-    }
+    for (; p + PGSIZE <= (char *)pa_end; p += PGSIZE) kfree(p);
 }
 
 // Free the page of physical memory pointed at by pa,
@@ -55,20 +55,22 @@ void kfree(void *pa) {
     if (((uint64)pa % PGSIZE) != 0 || (char *)pa < end || (uint64)pa >= PHYSTOP)
         panic("kfree");
 
-    acquire(&ref.lock);
-    if (--ref.cnt[PA2PGREF_ID(pa)] <= 0) {
-        // Fill with junk to catch dangling refs.
-        // pa will be memset multiple times if race-condition occurred.
-        memset(pa, 1, PGSIZE);
+    // Fill with junk to catch dangling refs.
+    memset(pa, 1, PGSIZE);
 
-        r = (struct run *)pa;
+    r = (struct run *)pa;
 
-        acquire(&kmem.lock);
-        r->next = kmem.freelist;
-        kmem.freelist = r;
-        release(&kmem.lock);
-    }
-    release(&ref.lock);
+    push_off();
+
+    int cpu = cpuid();
+    acquire(&kmem[cpu].lock);
+
+    r->next = kmem[cpu].freelist;
+    kmem[cpu].freelist = r;
+
+    release(&kmem[cpu].lock);
+
+    pop_off();
 }
 
 // Allocate one 4096-byte page of physical memory.
@@ -77,16 +79,39 @@ void kfree(void *pa) {
 void *kalloc(void) {
     struct run *r;
 
-    acquire(&kmem.lock);
-    r = kmem.freelist;
-    if (r) kmem.freelist = r->next;
-    release(&kmem.lock);
-
-    if (r) {
-        memset((char *)r, 5, PGSIZE);
-        ref.cnt[PA2PGREF_ID(r)] = 1;
+    push_off();
+    int cpu = cpuid();
+    acquire(&kmem[cpu].lock);
+    r = kmem[cpu].freelist;
+    if (!r) {
+        int steal_pages = 32;
+        for (int i = 0; i < NCPU; i++) {
+            if (i == cpu) continue;
+            acquire(&kmem[i].lock);
+            struct run *st = kmem[i].freelist;
+            while (st && steal_pages) {
+                struct run *temp;
+                temp = st->next;
+                st->next = kmem[cpu].freelist;
+                kmem[cpu].freelist = st;
+                kmem[i].freelist = temp;
+                st = kmem[i].freelist;
+                steal_pages--;
+            }
+            release(&kmem[i].lock);
+            if (steal_pages == 0 || i == NCPU) {
+                break;
+            }
+        }
     }
+    r = kmem[cpu].freelist;
+    if (r) {
+        kmem[cpu].freelist = r->next;
+    }
+    release(&kmem[cpu].lock);
+    pop_off();
 
+    if (r) memset((char *)r, 5, PGSIZE);  // fill with junk
     return (void *)r;
 }
 

@@ -271,7 +271,7 @@ void ilock(struct inode *ip) {
     struct buf *bp;
     struct dinode *dip;
 
-    if (ip == 0 || ip->ref < 1) panic("ilock");
+    if (ip == 0 || atomic_read4(&ip->ref) < 1) panic("ilock");
 
     acquiresleep(&ip->lock);
 
@@ -292,7 +292,8 @@ void ilock(struct inode *ip) {
 
 // Unlock the given inode.
 void iunlock(struct inode *ip) {
-    if (ip == 0 || !holdingsleep(&ip->lock) || ip->ref < 1) panic("iunlock");
+    if (ip == 0 || !holdingsleep(&ip->lock) || atomic_read4(&ip->ref) < 1)
+        panic("iunlock");
 
     releasesleep(&ip->lock);
 }
@@ -379,7 +380,6 @@ static uint bmap(struct inode *ip, uint bn) {
         brelse(bp);
         return addr;
     }
-
     panic("bmap: out of range");
 }
 

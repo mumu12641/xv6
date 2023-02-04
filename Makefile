@@ -108,7 +108,7 @@ endif
 
 ifdef KCSAN
 CFLAGS += -DKCSAN
-KCSANFLAG = -fsanitize=thread
+KCSANFLAG = -fsanitize=thread -fno-inline
 endif
 
 # Disable PIE when possible (for Ubuntu 16.10 toolchain)
@@ -222,7 +222,7 @@ UPROGS += \
 	$U/_cowtest
 # endif
 
-ifeq ($(LAB),thread)
+# ifeq ($(LAB),thread)
 UPROGS += \
 	$U/_uthread
 
@@ -238,7 +238,7 @@ ph: notxv6/ph.c
 
 barrier: notxv6/barrier.c
 	gcc -o barrier -g -O2 $(XCFLAGS) notxv6/barrier.c -pthread
-endif
+# endif
 
 ifeq ($(LAB),pgtbl)
 UPROGS += \

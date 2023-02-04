@@ -5,4 +5,8 @@ struct spinlock {
     // For debugging:
     char *name;       // Name of lock.
     struct cpu *cpu;  // The cpu holding the lock.
+#ifdef LAB_LOCK
+    int nts;          // the number of times the loop
+    int n;            // the count of calls 
+#endif
 };
