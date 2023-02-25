@@ -55,10 +55,8 @@ static void testsymlink(void) {
     char c = 0, c2 = 0;
     struct stat st;
 
-    printf("Start: test symlinks\n");
 
     mkdir("/testsymlink");
-
     fd1 = open("/testsymlink/a", O_CREATE | O_RDWR);
     if (fd1 < 0) fail("failed to open a");
 
