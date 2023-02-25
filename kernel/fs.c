@@ -379,6 +379,56 @@ static uint bmap(struct inode *ip, uint bn) {
         brelse(bp);
         return addr;
     }
+    
+    bn -= NINDIRECT;
+    if (bn < NDOUBLEINDIRECT) {
+        // 双链接
+        if ((addr = ip->addrs[NDIRECT + 1]) == 0) {
+            addr = balloc(ip->dev);
+            if (addr == 0) return 0;
+            ip->addrs[NDIRECT + 1] = addr;
+        }
+        bp = bread(ip->dev, addr);
+        a = (uint *)bp->data;
+
+        // 单链接
+        if((addr = a[bn / 256]) == 0){
+            addr = balloc(ip->dev);
+            if (addr == 0) return 0;
+            a[bn / 256] = addr;
+            log_write(bp);
+        }
+        brelse(bp);
+
+        bp = bread(ip->dev, addr);
+        a = (uint*)bp->data;
+        if((addr = a[bn % 256]) == 0){
+            addr = balloc(ip->dev);
+            if(addr){
+                a[bn % 256] = addr;
+                log_write(bp);
+            }
+        }
+        brelse(bp);
+        return addr;
+        // if ((addr = a[bn / 256]) == 0) {
+        //     addr = balloc(ip->dev);
+        //     if (addr == 0) return 0;
+        //     brelse(bp);
+        //     bp = bread(ip->dev, addr);
+        //     a = (uint*)bp->data;
+        //     // a[bn]
+        //     if((addr = a[bn]) == 0){
+        //         addr = balloc(ip->dev);
+        //         if(addr){
+        //             a[bn] = addr;
+        //             log_write(bp);
+        //         }
+        //     }
+        //     brelse(bp);
+        // }
+        return addr;
+    }
 
     panic("bmap: out of range");
 }
